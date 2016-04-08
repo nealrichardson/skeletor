@@ -1,0 +1,19 @@
+Package: skeletor
+Type: Package
+Title: Another R Package Skeleton
+Description: A longer statement about what this does.
+Version: 0.1.0
+Date: 2016-03-14
+Authors@R: c(person("Neal", "Richardson", role = c("aut", "cre"),
+    email = "neal.p.richardson@gmail.com"))
+Author: Neal Richardson [aut, cre]
+Maintainer: Neal Richardson <neal.p.richardson@gmail.com>
+URL: https://github.com/nealrichardson/skeletor
+BugReports: https://github.com/nealrichardson/skeletor/issues
+License: MIT + file LICENSE
+Depends:
+    R (>= 3.0.0)
+Imports:
+Suggests:
+    testthat
+RoxygenNote: 5.0.1
