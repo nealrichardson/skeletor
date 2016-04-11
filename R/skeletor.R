@@ -23,15 +23,11 @@ skeletor <- function (name, dir=name) {
 
     ## Sub in the package name appropriately
     files.to.edit <- c("DESCRIPTION", "Makefile", "NEWS.md", "README.md",
-        file.path("tests", "testthat.R"))
-    subber <- function (f) {
+        ".gitignore", file.path("tests", "testthat.R"))
+    lapply(files.to.edit, function (f) {
         f <- file.path(dir, f)
-        if (!file.exists(f)) {
-            stop(f, call.=FALSE)
-        }
         cleaned <- gsub("yourpackagename", name, readLines(f))
         writeLines(cleaned, f)
-    }
-    lapply(files.to.edit, subber)
+    })
     invisible(dir)
 }

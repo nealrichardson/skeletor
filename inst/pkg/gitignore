@@ -1,7 +1,7 @@
 *.pyc
 *.Rcheck/
 *.orig
-skeletor*.tar.gz
+yourpackagename*.tar.gz
 .DS_Store
 Rd2.pdf
 assets/
