@@ -1,0 +1,11 @@
+^.*\.md$
+^Rd2\.pdf$
+^Makefile$
+^assets$
+^vignette-data$
+^.*\.tar\.gz$
+^.*\.Rcheck$
+^\.travis\.yml$
+^.*\.log$
+^.*\.Rproj$
+^\.Rproj\.user$

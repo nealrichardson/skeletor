@@ -4,6 +4,8 @@ public({
     test_that("Creating a package skeleton", {
         dest <- file.path(tempdir(), "testskeletor")
         skeletor("testskeletor", dest)
+        expect_true(dir.exists(dest))
+        expect_true(dir.exists(file.path(dest, "tests")))
         desc <- readLines(file.path(dest, "DESCRIPTION"))
         expect_identical(desc[1], "Package: testskeletor")
         tests <- readLines(file.path(dest, "tests", "testthat.R"))
