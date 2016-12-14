@@ -15,7 +15,7 @@ build: doc
 	R CMD build .
 
 check: build
-	-R CMD CHECK --as-cran skeletor_$(VERSION).tar.gz
+	-R CMD check --as-cran skeletor_$(VERSION).tar.gz
 	rm -rf skeletor.Rcheck/
 
 man: doc
