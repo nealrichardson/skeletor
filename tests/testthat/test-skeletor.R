@@ -33,7 +33,6 @@ public({
         expect_true(file.exists("testskeletor_0.1.0.tar.gz"))
     })
     test_that("The built package passes R CMD CHECK", {
-        Sys.setenv("R_TESTS"="") # What the internet suggests
         status <- tools::Rcmd("check testskeletor_0.1.0.tar.gz")
         expect_equal(status, 0)
     })
