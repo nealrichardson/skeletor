@@ -1,4 +1,4 @@
-# yourpackagename: Informative Title For Your Package
+# yourpackagename
 
 ## Installing
 

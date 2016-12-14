@@ -1,7 +1,8 @@
 context("Skeletor")
 
 public({
-    dest <- file.path(tempdir(), "testskeletor")
+    tmpd <- tempdir()
+    dest <- file.path(tmpd, "testskeletor")
     test_that("Creating a package skeleton", {
         skeletor("testskeletor", dest)
         expect_true(dir.exists(dest))
@@ -24,5 +25,15 @@ public({
         expect_identical(tests[2], 'test_check("testskeletor")')
         git <- readLines(file.path(dest, ".gitignore"))
         expect_identical(git[4], 'testskeletor*.tar.gz')
+    })
+
+    test_that("The skeleton package can be built", {
+        setwd(tmpd)
+        tools::Rcmd("build testskeletor")
+        expect_true(file.exists("testskeletor_0.1.0.tar.gz"))
+    })
+    test_that("The built package passes R CMD CHECK", {
+        status <- tools::Rcmd("CHECK testskeletor_0.1.0.tar.gz")
+        expect_equal(status, 0)
     })
 })
