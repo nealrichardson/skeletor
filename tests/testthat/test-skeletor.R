@@ -18,13 +18,18 @@ public({
         expect_true(file.exists(file.path(dest, "Makefile")))
         expect_true(file.exists(file.path(dest, ".gitignore")))
     })
+
+    desc <- readLines(file.path(dest, "DESCRIPTION"))
+    tests <- readLines(file.path(dest, "tests", "testthat.R"))
+    git <- readLines(file.path(dest, ".gitignore"))
+
     test_that("The package name appears in the contents", {
-        desc <- readLines(file.path(dest, "DESCRIPTION"))
         expect_identical(desc[1], "Package: testskeletor")
-        tests <- readLines(file.path(dest, "tests", "testthat.R"))
         expect_identical(tests[2], 'test_check("testskeletor")')
-        git <- readLines(file.path(dest, ".gitignore"))
         expect_identical(git[4], 'testskeletor*.tar.gz')
+    })
+    test_that("Today's date is set in the DESCRIPTION", {
+        expect_identical(desc[6], paste("Date:", Sys.Date()))
     })
 
     test_that("The skeleton package can be built", {

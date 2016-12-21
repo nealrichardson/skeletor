@@ -34,5 +34,11 @@ skeletor <- function (name, dir=name) {
         cleaned <- gsub("yourpackagename", name, readLines(f))
         writeLines(cleaned, f)
     })
+
+    ## Edit the date in DESCRIPTION
+    desc <- readLines("DESCRIPTION")
+    desc[grep("^Date", desc)] <- paste("Date:", Sys.Date())
+    writeLines(desc, "DESCRIPTION")
+
     invisible(dir)
 }
