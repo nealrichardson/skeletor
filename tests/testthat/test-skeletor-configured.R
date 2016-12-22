@@ -59,6 +59,7 @@ public({
             expect_true(file.exists("testskeletor_0.1.0.tar.gz"))
         })
         test_that("The built package passes R CMD CHECK", {
+            skip_on_appveyor() ## It apparently can't find pdflatex to build the manual
             status <- tools::Rcmd("check testskeletor_0.1.0.tar.gz")
             expect_equal(status, 0)
         })
