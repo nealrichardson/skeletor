@@ -9,9 +9,19 @@ skeletor(pkg, dir = pkg, name = getOption("skeletor.name"),
   github = getOption("skeletor.github"))
 }
 \arguments{
-\item{dir}{character path in which to create the package. Default is \code{name}}
+\item{pkg}{character: name for your new package}
 
-\item{name}{character name for your new package}
+\item{dir}{character: path in which to create the package. Default is \code{pkg}}
+
+\item{name}{chararacter: your name. Default is 'skeletor.name' from options.
+See \code{\link{configure}} to set \code{name}, \code{email}, and
+\code{github} in your .Rprofile so that you don't need to pass them in here.}
+
+\item{email}{character: your email address. Likewise taken from option
+'skeletor.email' by default.}
+
+\item{github}{character: the GitHub account where you will push this new
+package. Likewise taken from option 'skeletor.github' by default.}
 }
 \value{
 The path, \code{dir}, invisibly.

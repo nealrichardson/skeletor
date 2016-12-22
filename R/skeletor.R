@@ -1,9 +1,17 @@
 #' Create a package skeleton
 #'
-#' @param name character name for your new package
-#' @param dir character path in which to create the package. Default is \code{name}
+#' @param pkg character: name for your new package
+#' @param dir character: path in which to create the package. Default is \code{pkg}
+#' @param name chararacter: your name. Default is 'skeletor.name' from options.
+#' See \code{\link{configure}} to set \code{name}, \code{email}, and
+#' \code{github} in your .Rprofile so that you don't need to pass them in here.
+#' @param email character: your email address. Likewise taken from option
+#' 'skeletor.email' by default.
+#' @param github character: the GitHub account where you will push this new
+#' package. Likewise taken from option 'skeletor.github' by default.
 #' @return The path, \code{dir}, invisibly.
 #' @export
+#' @importFrom utils as.person
 skeletor <- function (pkg, dir=pkg, name=getOption("skeletor.name"),
                       email=getOption("skeletor.email"),
                       github=getOption("skeletor.github")) {

@@ -2,3 +2,4 @@
 
 export(configure)
 export(skeletor)
+importFrom(utils,as.person)
