@@ -15,15 +15,22 @@ The pre-CRAN-release version of the package can be pulled from GitHub using the 
 
 ## Using
 
-After installing, simply running
+Skeletor provides only two functions: (1) `skeletor`, which makes a package skeleton for you, and (2) `configure`, which sets a few parameters in your .Rprofile so that you don't need to provide them each time. These parameters, which are inserted into the package skeleton template, are:
+
+* **name**: your name
+* **email**: your email address
+* **github**: your GitHub username
+
+After installing, run `configure` once to set these, like:
+
+    > library(skeletor)
+    > configure(name="Neal Richardson", email="neal.p.richardson@gmail.com", github="nealrichardson")
+
+Thereafter, simply running
 
     $ R -e 'skeletor::skeletor("wittynamehere")'
 
-from the shell will create a package skeleton called "wittynamehere" in a same-named subdirectory of your current working directory. Then you can open that directory's contents in your favorite IDE or text editor. You can immediately run tests on your new package with `make test` or by running `R CMD CHECK` on it.
-
-## Customizing
-
-In its initial release, certain features of the package skeleton are hard-coded, such as the author name, GitHub link, etc. Someday I'll parameterize those, but for now, you can just find/replace them. Or for a smoother experience, you can fork this repo, edit those values for yourself, and run `skeletor` from your fork.
+from the shell will create a package skeleton called "wittynamehere" in a same-named subdirectory of your current working directory, and it will insert your name, email, and GitHub account into the appropriate parts of the package. Then you can open that directory's contents in your favorite IDE or text editor. You also can immediately run tests on your new package with `make test` or by running `R CMD check` on it.
 
 ## For developers
 
