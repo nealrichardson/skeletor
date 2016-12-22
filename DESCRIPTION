@@ -1,7 +1,10 @@
 Package: skeletor
 Type: Package
 Title: Another R Package Skeleton Generator
-Description: A tool for bootstrapping new packages with useful defaults, a test suite outline that passes checks, and helpers for adding documentation and running tests, both locally and on Travis-CI.
+Description: A tool for bootstrapping new packages with useful defaults, a test
+    suite outline that passes checks, and helpers for pushing your package to
+    'GitHub', adding documentation, and running tests, both locally and on
+    hosted services.
 Version: 1.0.0
 Date: 2016-12-21
 Authors@R: c(person("Neal", "Richardson", role = c("aut", "cre"),

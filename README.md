@@ -2,9 +2,9 @@
 
 [![Build Status](https://travis-ci.org/nealrichardson/skeletor.png?branch=master)](https://travis-ci.org/nealrichardson/skeletor) [![Build status](https://ci.appveyor.com/api/projects/status/28hsiu1b9ntisto7/branch/master?svg=true)](https://ci.appveyor.com/project/nealrichardson/skeletor/branch/master)  [![codecov](https://codecov.io/gh/nealrichardson/skeletor/branch/master/graph/badge.svg)](https://codecov.io/gh/nealrichardson/skeletor)
 
-There are lots of R package skeletons out there. Why write another? I want a package skeleton that lays out everything I need to write tests, code, documentation, and potentially vignettes. I want it set up to build and install and pass CHECK smoothly. And I want it set up for using git, GitHub, and Travis CI. The defaults of the base R's `package.skeleton` never are what I want, and `devtools::create` left out key features that I want in my package.
+There are a few R package skeletons out there. Why write another? I want a package skeleton that lays out everything I need to write tests, code, documentation, and potentially vignettes. I want it set up to build and install and pass `R CMD check` smoothly. And I want it set up for using git, GitHub, and Travis CI. The defaults of the base R's `package.skeleton` never are what I want, and what `devtools::create` makes is too bare.
 
-I found that I was starting every package I wrote by copying the last package I made, deleting its code and tests, and renaming everything. `skeletor` automates that.
+I found that I was starting every package by copying the last package I made, deleting its code and tests, and renaming everything. `skeletor` automates that.
 
 ## Installing
 
@@ -15,7 +15,7 @@ The pre-CRAN-release version of the package can be pulled from GitHub using the 
 
 ## Using
 
-Skeletor provides only two functions: (1) `skeletor`, which makes a package skeleton for you, and (2) `configure`, which sets a few parameters in your .Rprofile so that you don't need to provide them each time. These parameters, which are inserted into the package skeleton template, are:
+Skeletor provides two functions: (1) `skeletor`, which makes package skeletons, and (2) `configure`, which sets a few parameters in your .Rprofile so that you don't need to provide them each time. These parameters, which are inserted into the package skeleton template, are:
 
 * **name**: your name
 * **email**: your email address
@@ -30,7 +30,7 @@ Thereafter, simply running
 
     $ R -e 'skeletor::skeletor("wittynamehere")'
 
-from the shell will create a package skeleton called "wittynamehere" in a same-named subdirectory of your current working directory, and it will insert your name, email, and GitHub account into the appropriate parts of the package. Then you can open that directory's contents in your favorite IDE or text editor. You also can immediately run tests on your new package with `make test` or by running `R CMD check` on it.
+from the shell will create a package called "wittynamehere" in a same-named subdirectory of your current working directory, and it will insert your name, email, and GitHub account into the appropriate parts of the package. Then you can open that directory's contents in your favorite IDE or text editor. You also can immediately run tests on your new package with `make test` or by running `R CMD check` on it.
 
 ## For developers
 
