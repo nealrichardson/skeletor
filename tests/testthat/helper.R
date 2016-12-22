@@ -10,4 +10,6 @@ public <- function (...) with(globalenv(), ...)
 
 public({
     no.check <- Sys.getenv("NOCHECK") == "TRUE" ## To skip the R CMD check tests when developing
+    expect_file_exists <- function (...) expect_true(file.exists(...))
+    expect_dir_exists <- function (...) expect_true(dir.exists(...))
 })

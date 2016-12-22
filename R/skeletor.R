@@ -33,6 +33,8 @@ skeletor <- function (pkg, dir=pkg, name=getOption("skeletor.name"),
     file.rename("Rinstignore", ".Rinstignore")
     file.rename("travis.yml", ".travis.yml")
     file.rename("gitignore", ".gitignore")
+    file.rename(file.path("R", "yourpackagename.R"),
+        file.path("R", paste0(pkg, ".R")))
 
     ## Create empty dirs
     dir.create("man")
@@ -40,7 +42,8 @@ skeletor <- function (pkg, dir=pkg, name=getOption("skeletor.name"),
 
     ## Load files that need munging
     files.to.edit <- sapply(c("DESCRIPTION", "Makefile", "NEWS.md", "README.md",
-        ".gitignore", file.path("tests", "testthat.R")),
+        ".gitignore", file.path("tests", "testthat.R"),
+        file.path("R", paste0(pkg, ".R"))),
         readLines, simplify=FALSE)
 
     ## Sub in the package name appropriately

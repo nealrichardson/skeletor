@@ -11,18 +11,19 @@ public({
     dest <- file.path(tmpd, pkgdir)
     test_that("Creating a package skeleton", {
         skeletor("testskeletor", dest)
-        expect_true(dir.exists(dest))
+        expect_dir_exists(dest)
     })
     test_that("The right dirs exist", {
-        expect_true(dir.exists(file.path(dest, "tests")))
-        expect_true(dir.exists(file.path(dest, "man")))
-        expect_true(dir.exists(file.path(dest, "vignettes")))
+        expect_dir_exists(file.path(dest, "tests"))
+        expect_dir_exists(file.path(dest, "man"))
+        expect_dir_exists(file.path(dest, "vignettes"))
     })
     test_that("The right files exist", {
-        expect_true(file.exists(file.path(dest, "DESCRIPTION")))
-        expect_true(file.exists(file.path(dest, ".Rbuildignore")))
-        expect_true(file.exists(file.path(dest, "Makefile")))
-        expect_true(file.exists(file.path(dest, ".gitignore")))
+        expect_file_exists(file.path(dest, "DESCRIPTION"))
+        expect_file_exists(file.path(dest, ".Rbuildignore"))
+        expect_file_exists(file.path(dest, "Makefile"))
+        expect_file_exists(file.path(dest, ".gitignore"))
+        expect_file_exists(file.path(dest, "R", "testskeletor.R"))
     })
 
     desc <- readLines(file.path(dest, "DESCRIPTION"))
@@ -61,7 +62,7 @@ public({
         setwd(tmpd)
         test_that("The skeleton package can be built", {
             tools::Rcmd(paste("build", pkgdir))
-            expect_true(file.exists("testskeletor_0.1.0.tar.gz"))
+            expect_file_exists("testskeletor_0.1.0.tar.gz")
         })
         test_that("The built package passes R CMD CHECK", {
             skip_on_appveyor() ## It apparently can't find pdflatex to build the manual
