@@ -1,6 +1,8 @@
 context("Skeletor with configure")
 
-options(skeletor.name="Neal Richardson", skeletor.email="neal.p.richardson@gmail.com", skeletor.github="nealrichardson")
+options(skeletor.name="Neal Richardson",
+        skeletor.email="neal.p.richardson@gmail.com",
+        skeletor.github="nealrichardson")
 
 public({
     tmpd <- tempdir()

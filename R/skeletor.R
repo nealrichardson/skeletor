@@ -52,7 +52,8 @@ skeletor <- function (pkg, dir=pkg, name=getOption("skeletor.name"),
     })
 
     ## Edit the date in DESCRIPTION
-    files.to.edit[["DESCRIPTION"]][grep("^Date", files.to.edit[["DESCRIPTION"]])] <- paste("Date:", Sys.Date())
+    dateline <- grep("^Date", files.to.edit[["DESCRIPTION"]])
+    files.to.edit[["DESCRIPTION"]][dateline] <- paste("Date:", Sys.Date())
 
     ## If name given, write it in
     if (!is.null(name)) {
