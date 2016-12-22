@@ -1,6 +1,6 @@
 # skeletor: Another R Package Skeleton Generator
 
-[![Build Status](https://travis-ci.org/nealrichardson/skeletor.png?branch=master)](https://travis-ci.org/nealrichardson/skeletor) [![codecov.io](https://codecov.io/github/nealrichardson/httpcache/skeletor.svg?branch=master)](https://codecov.io/github/nealrichardson/skeletor?branch=master)
+[![Build Status](https://travis-ci.org/nealrichardson/skeletor.png?branch=master)](https://travis-ci.org/nealrichardson/skeletor) [![Build status](https://ci.appveyor.com/api/projects/status/28hsiu1b9ntisto7/branch/master?svg=true)](https://ci.appveyor.com/project/nealrichardson/skeletor/branch/master)  [![codecov.io](https://codecov.io/github/nealrichardson/httpcache/skeletor.svg?branch=master)](https://codecov.io/github/nealrichardson/skeletor?branch=master) 
 
 There are lots of R package skeletons out there. Why write another? I want a package skeleton that lays out everything I need to write tests, code, documentation, and potentially vignettes. I want it set up to build and install and pass CHECK smoothly. And I want it set up for using git, GitHub, and Travis CI. The defaults of the base R's `package.skeleton` never are what I want, and `devtools::create` left out key features that I want in my package.
 
