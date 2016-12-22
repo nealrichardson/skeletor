@@ -64,7 +64,13 @@ skeletor <- function (pkg, dir=pkg, name=getOption("skeletor.name"),
     }
     ## Now do Authors@R
     if (!is.null(name) && !is.null(email)) {
-
+        ## TODO: let someone specify a `person` in "name"
+        p <- as.person(name)
+        authors.at.r <- paste0('Authors@R: person(', deparse(p$given), ', ',
+            deparse(p$family), ', role=c("aut", "cre"), email="', email,
+            '")')
+        authors.row <- grep("^Authors", files.to.edit[["DESCRIPTION"]])
+        files.to.edit[["DESCRIPTION"]][authors.row] <- authors.at.r
     }
 
     ## Write them all back out

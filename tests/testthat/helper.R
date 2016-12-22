@@ -7,3 +7,7 @@ options(warn=1,
     skeletor.github=NULL)
 
 public <- function (...) with(globalenv(), ...)
+
+public({
+    no.check <- Sys.getenv("NOCHECK") == "TRUE" ## To skip the R CMD check tests when developing
+})

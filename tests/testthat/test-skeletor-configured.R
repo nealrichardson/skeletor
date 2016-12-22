@@ -7,7 +7,7 @@ options(skeletor.name="Neal Richardson", skeletor.email="neal.p.richardson@gmail
 public({
     tmpd <- tempdir()
     pkgdir <- tempfile(tmpdir="")
-    pkgdir <- substr(pkgdir, 2, nchar(pkgdir)) ## Remove the leading /. We'll need that later
+    pkgdir <- substr(pkgdir, 2, nchar(pkgdir)) ## Remove the leading /
     dest <- file.path(tmpd, pkgdir)
     test_that("Creating a package skeleton", {
         skeletor("testskeletor", dest)
@@ -48,14 +48,19 @@ public({
     test_that("skeletor.email appears in the right place", {
         expect_true("Maintainer: Neal Richardson <neal.p.richardson@gmail.com>" %in% desc)
     })
+    test_that("Authors@R gets set correctly if you give a name and email", {
+        expect_true('Authors@R: person("Neal", "Richardson", role=c("aut", "cre"), email="neal.p.richardson@gmail.com")' %in% desc)
+    })
 
-    setwd(tmpd)
-    test_that("The skeleton package can be built", {
-        tools::Rcmd(paste("build", pkgdir))
-        expect_true(file.exists("testskeletor_0.1.0.tar.gz"))
-    })
-    test_that("The built package passes R CMD CHECK", {
-        status <- tools::Rcmd("check testskeletor_0.1.0.tar.gz")
-        expect_equal(status, 0)
-    })
+    if (!no.check) {
+        setwd(tmpd)
+        test_that("The skeleton package can be built", {
+            tools::Rcmd(paste("build", pkgdir))
+            expect_true(file.exists("testskeletor_0.1.0.tar.gz"))
+        })
+        test_that("The built package passes R CMD CHECK", {
+            status <- tools::Rcmd("check testskeletor_0.1.0.tar.gz")
+            expect_equal(status, 0)
+        })
+    }
 })

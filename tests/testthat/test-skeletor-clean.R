@@ -48,13 +48,15 @@ public({
         expect_true("Maintainer: yourname <youremail@example.com>" %in% desc)
     })
 
-    setwd(tmpd)
-    test_that("The skeleton package can be built", {
-        tools::Rcmd(paste("build", pkgdir))
-        expect_true(file.exists("testskeletor_0.1.0.tar.gz"))
-    })
-    test_that("The built package passes R CMD CHECK", {
-        status <- tools::Rcmd("check testskeletor_0.1.0.tar.gz")
-        expect_equal(status, 0)
-    })
+    if (!no.check) {
+        setwd(tmpd)
+        test_that("The skeleton package can be built", {
+            tools::Rcmd(paste("build", pkgdir))
+            expect_true(file.exists("testskeletor_0.1.0.tar.gz"))
+        })
+        test_that("The built package passes R CMD CHECK", {
+            status <- tools::Rcmd("check testskeletor_0.1.0.tar.gz")
+            expect_equal(status, 0)
+        })
+    }
 })
