@@ -1,7 +1,5 @@
 context("Skeletor with configure")
 
-context("Skeletor with no configuration")
-
 options(skeletor.name="Neal Richardson", skeletor.email="neal.p.richardson@gmail.com", skeletor.github="nealrichardson")
 
 public({

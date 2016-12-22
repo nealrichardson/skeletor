@@ -57,5 +57,9 @@ configure <- function (name=NULL, email=NULL, github=NULL, file="~/.Rprofile") {
         ## Write out
         writeLines(lines, file)
     }
+
+    ## Set the options in the current session too
+    do.call("options", out)
+
     invisible(out)
 }

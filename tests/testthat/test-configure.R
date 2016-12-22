@@ -38,6 +38,9 @@ public({
                  skeletor.email="sy.name@example.com",
                  skeletor.github="syn"))
     })
+    test_that("configure sets the options in the current session too", {
+        expect_identical(getOption("skeletor.name"), "State Your Name")
+    })
 
     test_that("configure with empty args doesn't create a file if it doesn't exist", {
         f3 <- tempfile()
