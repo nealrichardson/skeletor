@@ -13,7 +13,6 @@ BugReports: https://github.com/nealrichardson/skeletor/issues
 License: MIT + file LICENSE
 Depends:
     R (>= 3.0.0)
-Imports:
 Suggests:
     testthat
 RoxygenNote: 5.0.1

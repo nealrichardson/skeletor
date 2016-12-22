@@ -9,7 +9,7 @@ If you're putting `yourpackagename` on CRAN, it can be installed with
 The pre-release version of the package can be pulled from GitHub using the [devtools](https://github.com/hadley/devtools) package:
 
     # install.packages("devtools")
-    devtools::install_github("nealrichardson/yourpackagename", build_vignettes=TRUE)
+    devtools::install_github("yourgithub/yourpackagename", build_vignettes=TRUE)
 
 ## For developers
 

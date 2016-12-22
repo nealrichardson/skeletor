@@ -4,12 +4,14 @@
 \alias{skeletor}
 \title{Create a package skeleton}
 \usage{
-skeletor(name, dir = name)
+skeletor(pkg, dir = pkg, name = getOption("skeletor.name"),
+  email = getOption("skeletor.email"),
+  github = getOption("skeletor.github"))
 }
 \arguments{
-\item{name}{character name for your new package}
-
 \item{dir}{character path in which to create the package. Default is \code{name}}
+
+\item{name}{character name for your new package}
 }
 \value{
 The path, \code{dir}, invisibly.

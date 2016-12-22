@@ -4,7 +4,10 @@
 #' @param dir character path in which to create the package. Default is \code{name}
 #' @return The path, \code{dir}, invisibly.
 #' @export
-skeletor <- function (name, dir=name) {
+skeletor <- function (pkg, dir=pkg, name=getOption("skeletor.name"),
+                      email=getOption("skeletor.email"),
+                      github=getOption("skeletor.github")) {
+
     ## Make the package dir
     dir.create(dir)
 
@@ -27,18 +30,47 @@ skeletor <- function (name, dir=name) {
     dir.create("man")
     dir.create("vignettes")
 
+    ## Load files that need munging
+    files.to.edit <- sapply(c("DESCRIPTION", "Makefile", "NEWS.md", "README.md",
+        ".gitignore", file.path("tests", "testthat.R")),
+        readLines, simplify=FALSE)
+
     ## Sub in the package name appropriately
-    files.to.edit <- c("DESCRIPTION", "Makefile", "NEWS.md", "README.md",
-        ".gitignore", file.path("tests", "testthat.R"))
-    lapply(files.to.edit, function (f) {
-        cleaned <- gsub("yourpackagename", name, readLines(f))
-        writeLines(cleaned, f)
+    files.to.edit <- lapply(files.to.edit, function (f) {
+        gsub("yourpackagename", pkg, f)
     })
 
     ## Edit the date in DESCRIPTION
-    desc <- readLines("DESCRIPTION")
-    desc[grep("^Date", desc)] <- paste("Date:", Sys.Date())
-    writeLines(desc, "DESCRIPTION")
+    files.to.edit[["DESCRIPTION"]][grep("^Date", files.to.edit[["DESCRIPTION"]])] <- paste("Date:", Sys.Date())
+
+    ## If name given, write it in
+    if (!is.null(name)) {
+        ## Read in the LICENSE (we don't need it otherwise)
+        files.to.edit[["LICENSE"]] <- gsub("yourname", name,
+            readLines("LICENSE"))
+        files.to.edit[["DESCRIPTION"]] <- gsub("yourname", name,
+            files.to.edit[["DESCRIPTION"]])
+    }
+    ## Same for github
+    if (!is.null(github)) {
+        for (f in c("DESCRIPTION", "README.md")) {
+            files.to.edit[[f]] <- gsub("yourgithub", github, files.to.edit[[f]])
+        }
+    }
+    ## And email
+    if (!is.null(name)) {
+        files.to.edit[["DESCRIPTION"]] <- gsub("youremail@example.com", email,
+            files.to.edit[["DESCRIPTION"]])
+    }
+    ## Now do Authors@R
+    if (!is.null(name) && !is.null(email)) {
+
+    }
+
+    ## Write them all back out
+    for (f in names(files.to.edit)) {
+        writeLines(files.to.edit[[f]], f)
+    }
 
     invisible(dir)
 }
