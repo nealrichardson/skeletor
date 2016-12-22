@@ -2,7 +2,7 @@ VERSION = $(shell grep ^Version DESCRIPTION | sed s/Version:\ //)
 
 doc:
 	R --slave -e 'library(roxygen2); roxygenise()'
-	git add --all man/*.Rd
+	-git add --all man/*.Rd
 
 test:
 	R CMD INSTALL --install-tests .
