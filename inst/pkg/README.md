@@ -1,5 +1,7 @@
 # yourpackagename
 
+[![Build Status](https://travis-ci.org/yourgithub/yourpackagename.png?branch=master)](https://travis-ci.org/yourgithub/yourpackagename)  [![codecov](https://codecov.io/gh/yourgithub/yourpackagename/branch/master/graph/badge.svg)](https://codecov.io/gh/yourgithub/yourpackagename)
+
 ## Installing
 
 If you're putting `yourpackagename` on CRAN, it can be installed with

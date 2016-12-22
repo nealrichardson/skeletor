@@ -29,6 +29,7 @@ public({
     tests <- readLines(file.path(dest, "tests", "testthat.R"))
     git <- readLines(file.path(dest, ".gitignore"))
     lisc <- readLines(file.path(dest, "LICENSE"))
+    readme <- readLines(file.path(dest, "README.md"))
 
     test_that("The package name appears in the contents", {
         expect_identical(desc[1], "Package: testskeletor")
@@ -47,6 +48,10 @@ public({
     })
     test_that("skeletor.email appears in the right place", {
         expect_true("Maintainer: Neal Richardson <neal.p.richardson@gmail.com>" %in% desc)
+    })
+    test_that("The travis/codecov badge links get updated", {
+        u <- "https://travis-ci.org/nealrichardson/testskeletor.png?branch=master"
+        expect_true(any(grepl(u, readme, fixed=TRUE)))
     })
     test_that("Authors@R gets set correctly if you give a name and email", {
         expect_true('Authors@R: person("Neal", "Richardson", role=c("aut", "cre"), email="neal.p.richardson@gmail.com")' %in% desc)
