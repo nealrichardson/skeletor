@@ -61,6 +61,7 @@ public({
         })
         test_that("The built package passes R CMD CHECK", {
             skip_on_appveyor() ## It apparently can't find pdflatex to build the manual
+            skip_on_cran() ## In case it is slow
             status <- tools::Rcmd("check testskeletor_0.1.0.tar.gz")
             expect_equal(status, 0)
         })
