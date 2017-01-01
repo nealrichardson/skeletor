@@ -61,13 +61,13 @@ public({
     if (!no.check) {
         setwd(tmpd)
         test_that("The skeleton package can be built", {
-            tools::Rcmd(paste("build", pkgdir))
+            Rcmd(paste("build", pkgdir))
             expect_file_exists("testskeletor_0.1.0.tar.gz")
         })
         test_that("The built package passes R CMD CHECK", {
             skip_on_appveyor() ## It apparently can't find pdflatex to build the manual
             skip_on_cran() ## In case it is slow
-            status <- tools::Rcmd("check testskeletor_0.1.0.tar.gz")
+            status <- Rcmd("check testskeletor_0.1.0.tar.gz")
             expect_equal(status, 0)
         })
     }

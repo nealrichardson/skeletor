@@ -12,4 +12,18 @@ public({
     no.check <- Sys.getenv("NOCHECK") == "TRUE" ## To skip the R CMD check tests when developing
     expect_file_exists <- function (...) expect_true(file.exists(...))
     expect_dir_exists <- function (...) expect_true(dir.exists(...))
+
+    ## from __future__ import ...
+    if ("Rcmd" %in% ls(envir=asNamespace("tools"))) {
+        Rcmd <- tools::Rcmd
+    } else {
+        ## R < 3.3
+        Rcmd <- function (args, ...) {
+            if (.Platform$OS.type == "windows") {
+                system2(file.path(R.home("bin"), "Rcmd.exe"), args, ...)
+            } else {
+                system2(file.path(R.home("bin"), "R"), c("CMD", args), ...)
+            }
+        }
+    }
 })
