@@ -1,5 +1,7 @@
 ### skeletor 1.0.3 (under development)
 
+* Fix skeleton README's reference to Appveyor
+
 ### skeletor 1.0.2
 
 * Patch tests to work with "oldrel" R, which doesn't have `tools::Rcmd`.

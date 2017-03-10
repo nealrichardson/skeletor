@@ -24,7 +24,7 @@ If you have a codecov.io account, running your tests on Travis will trigger the 
 
 ### 3. Appveyor
 
-Go to [Appveyor's new project page](https://ci.appveyor.com/projects/new) and select your new repository from the list. Then you can go to the [badges](https://ci.appveyor.com/project/nealrichardson/httptest/settings/badges) page, copy the markdown code it provides, and paste it up with the other badges above. (Their badge API has a random token in it, so `skeletor` can't include it in the template for you.)
+Go to [Appveyor's new project page](https://ci.appveyor.com/projects/new) and select your new repository from the list. Then you can go to the [badges](https://ci.appveyor.com/project/yourgithub/yourpackagename/settings/badges) page, copy the markdown code it provides, and paste it up with the other badges above. (Their badge API has a random token in it, so `skeletor` can't include it in the template for you.)
 
 ### 4. Delete this "How to finish setting up your new package" section from your README.md
 
