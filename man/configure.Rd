@@ -20,10 +20,9 @@ personal .Rprofile file.}
 \value{
 Invisibly, the options set in \code{file}. Typically, you'll call
 this function only once, and only for its side effects of adding the values
-to your .Rprofile so that \code{\link{skeletor}} will find them there without
+to your .Rprofile so that \code{\link[=skeletor]{skeletor()}} will find them there without
 your having to enter them each time.
 }
 \description{
 Set some personal defaults for skeletor
 }
-

@@ -6,8 +6,8 @@ Description: A tool for bootstrapping new packages with useful defaults,
     tests, checking test coverage, building vignettes, and more. Package
     skeletons it creates are set up for pushing your package to
     'GitHub' and using other hosted services for building and test automation.
-Version: 1.0.3
-Date: 2017-01-01
+Version: 1.0.4
+Date: 2017-04-09
 Authors@R: c(person("Neal", "Richardson", role = c("aut", "cre"),
     email = "neal.p.richardson@gmail.com"))
 Author: Neal Richardson [aut, cre]
@@ -20,4 +20,5 @@ Depends:
 Suggests:
     covr,
     testthat
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.0
+Roxygen: list(markdown = TRUE)

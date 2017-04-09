@@ -4,9 +4,9 @@
 #' @param github character: your GitHub account
 #' @param file character: file path to set these in as options. Default is your
 #' personal .Rprofile file.
-#' @return Invisibly, the options set in \code{file}. Typically, you'll call
+#' @return Invisibly, the options set in `file`. Typically, you'll call
 #' this function only once, and only for its side effects of adding the values
-#' to your .Rprofile so that \code{\link{skeletor}} will find them there without
+#' to your .Rprofile so that [skeletor()] will find them there without
 #' your having to enter them each time.
 #' @export
 configure <- function (name=NULL, email=NULL, github=NULL, file="~/.Rprofile") {

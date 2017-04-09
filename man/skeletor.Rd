@@ -14,7 +14,7 @@ skeletor(pkg, dir = pkg, name = getOption("skeletor.name"),
 \item{dir}{character: path in which to create the package. Default is \code{pkg}}
 
 \item{name}{chararacter: your name. Default is 'skeletor.name' from options.
-See \code{\link{configure}} to set \code{name}, \code{email}, and
+See \code{\link[=configure]{configure()}} to set \code{name}, \code{email}, and
 \code{github} in your .Rprofile so that you don't need to pass them in here.}
 
 \item{email}{character: your email address. Likewise taken from option
@@ -29,4 +29,3 @@ The path, \code{dir}, invisibly.
 \description{
 Create a package skeleton
 }
-
