@@ -2,7 +2,7 @@
 
 * Fix skeleton README's reference to Appveyor
 * Move 'covr' to Suggests rather than a .travis.yml extra installation
-* Enable [markdown in roxygen tags](https://cran.r-project.org/web/packages/roxygen2/vignettes/markdown.html)
+* Enable [markdown in roxygen tags](https://github.com/klutometis/roxygen/blob/master/vignettes/markdown.md)
 
 ### skeletor 1.0.2
 
