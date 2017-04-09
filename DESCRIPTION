@@ -18,5 +18,6 @@ License: MIT + file LICENSE
 Depends:
     R (>= 3.0.0)
 Suggests:
+    covr,
     testthat
 RoxygenNote: 5.0.1
