@@ -1,6 +1,7 @@
 # yourpackagename
 
 [![Build Status](https://travis-ci.org/yourgithub/yourpackagename.png?branch=master)](https://travis-ci.org/yourgithub/yourpackagename)  [![codecov](https://codecov.io/gh/yourgithub/yourpackagename/branch/master/graph/badge.svg)](https://codecov.io/gh/yourgithub/yourpackagename)
+[![cran](https://www.r-pkg.org/badges/version-last-release/yourpackagename)](https://cran.r-project.org/package=yourpackagename)
 
 ## How to finish setting up your new package
 

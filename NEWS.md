@@ -1,5 +1,6 @@
 ### skeletor 1.0.5 (under development)
 * Use `_R_CHECK_CRAN_INCOMING_REMOTE_` environment variable, newly released in R 3.4.0, in `make check`
+* Add `r-pkg.org` badge to the skeleton
 
 ### skeletor 1.0.4
 

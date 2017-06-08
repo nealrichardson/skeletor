@@ -58,6 +58,11 @@ public({
         u <- "https://ci.appveyor.com/project/nealrichardson/testskeletor/settings/badges"
         expect_true(any(grepl(u, readme, fixed=TRUE)))
     })
+    test_that("The r-pkg link gets updated", {
+        u <- "https://www.r-pkg.org/badges/version-last-release/testskeletor"
+        expect_true(any(grepl(u, readme, fixed=TRUE)))
+    })
+
     test_that("Authors@R gets set correctly if you give a name and email", {
         expect_true('Authors@R: person("Neal", "Richardson", role=c("aut", "cre"), email="neal.p.richardson@gmail.com")' %in% desc)
     })
