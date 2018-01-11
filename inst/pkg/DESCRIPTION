@@ -20,6 +20,8 @@ Depends:
 Imports:
 Suggests:
     covr,
+    knitr,
     testthat
 RoxygenNote: 6.0.0
 Roxygen: list(markdown = TRUE)
+VignetteBuilder: knitr
