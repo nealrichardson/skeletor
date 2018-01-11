@@ -19,6 +19,7 @@ Depends:
     R (>= 3.0.0)
 Suggests:
     covr,
+    knitr,
     testthat
 RoxygenNote: 6.0.0
 Roxygen: list(markdown = TRUE)
