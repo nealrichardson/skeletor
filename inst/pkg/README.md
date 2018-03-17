@@ -35,7 +35,7 @@ Go to [Appveyor's new project page](https://ci.appveyor.com/projects/new) and se
 
     install.packages("yourpackagename") -->
 
-The pre-release version of the package can be pulled from GitHub using the [devtools](https://github.com/hadley/devtools) package:
+The pre-release version of the package can be pulled from GitHub using the [devtools](https://github.com/r-lib/devtools) package:
 
     # install.packages("devtools")
     devtools::install_github("yourgithub/yourpackagename", build_vignettes=TRUE)
@@ -46,7 +46,7 @@ The repository includes a Makefile to facilitate some common tasks.
 
 ### Running tests
 
-`$ make test`. Requires the [testthat](https://github.com/hadley/testthat) package. You can also specify a specific test file or files to run by adding a "file=" argument, like `$ make test file=logging`. `test_package` will do a regular-expression pattern match within the file names. See its documentation in the `testthat` package.
+`$ make test`. Requires the [testthat](http://testthat.r-lib.org/) package. You can also specify a specific test file or files to run by adding a "file=" argument, like `$ make test file=logging`. `testthat::test_package()` will do a regular-expression pattern match within the file names (ignoring the `test-` prefix and the `.R` file extension). 
 
 ### Updating documentation
 

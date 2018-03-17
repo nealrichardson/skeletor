@@ -13,7 +13,7 @@ skeletor(pkg, dir = pkg, name = getOption("skeletor.name"),
 
 \item{dir}{character: path in which to create the package. Default is \code{pkg}}
 
-\item{name}{chararacter: your name. Default is 'skeletor.name' from options.
+\item{name}{character: your name. Default is 'skeletor.name' from options.
 See \code{\link[=configure]{configure()}} to set \code{name}, \code{email}, and
 \code{github} in your .Rprofile so that you don't need to pass them in here.}
 

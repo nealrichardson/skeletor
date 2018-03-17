@@ -35,22 +35,19 @@ public({
         expect_identical(tests[2], 'test_check("testskeletor")')
         expect_identical(git[4], 'testskeletor*.tar.gz')
     })
-    test_that("Today's date is set in the DESCRIPTION", {
-        expect_identical(desc[11], paste("Date:", Sys.Date()))
-    })
 
     test_that("skeletor.name is empty, so it doesn't get overwritten", {
         expect_identical(lisc[2], "COPYRIGHT HOLDER: yourname")
-        expect_true("Author: yourname [aut, cre]" %in% desc)
+        expect_true(any(grepl('person\\("your", "name"', desc)))
     })
     test_that("skeletor.github is empty, so it doesn't get overwritten", {
         expect_true("URL: https://github.com/yourgithub/testskeletor" %in% desc)
     })
     test_that("skeletor.email is empty, so it doesn't get overwritten", {
-        expect_true("Maintainer: yourname <youremail@example.com>" %in% desc)
+        expect_true(any(grepl("youremail@example.com", desc)))
     })
     test_that("The .onAttach function in the R file points to testskeletor", {
-        expect_true('.onAttach <- function (lib, pkgname="testskeletor") {' %in% onattach)
+        expect_true('.onLoad <- function (lib, pkgname="testskeletor") {' %in% onattach)
     })
 
     if (!no.check) {

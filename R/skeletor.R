@@ -2,7 +2,7 @@
 #'
 #' @param pkg character: name for your new package
 #' @param dir character: path in which to create the package. Default is `pkg`
-#' @param name chararacter: your name. Default is 'skeletor.name' from options.
+#' @param name character: your name. Default is 'skeletor.name' from options.
 #' See [configure()] to set `name`, `email`, and
 #' `github` in your .Rprofile so that you don't need to pass them in here.
 #' @param email character: your email address. Likewise taken from option

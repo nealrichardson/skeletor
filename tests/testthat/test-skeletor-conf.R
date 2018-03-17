@@ -37,18 +37,15 @@ public({
         expect_identical(tests[2], 'test_check("testskeletor")')
         expect_identical(git[4], 'testskeletor*.tar.gz')
     })
-    test_that("Today's date is set in the DESCRIPTION", {
-        expect_identical(desc[11], paste("Date:", Sys.Date()))
-    })
     test_that("skeletor.name appears in the right places", {
         expect_identical(lisc[2], "COPYRIGHT HOLDER: Neal Richardson")
-        expect_true("Author: Neal Richardson [aut, cre]" %in% desc)
+        expect_true(any(grepl('person\\("Neal", "Richardson"', desc)))
     })
     test_that("skeletor.github appears in the right places", {
         expect_true("URL: https://github.com/nealrichardson/testskeletor" %in% desc)
     })
     test_that("skeletor.email appears in the right place", {
-        expect_true("Maintainer: Neal Richardson <neal.p.richardson@gmail.com>" %in% desc)
+        expect_true(any(grepl("neal.p.richardson@gmail.com", desc)))
     })
     test_that("The travis/codecov badge links get updated", {
         u <- "https://travis-ci.org/nealrichardson/testskeletor.png?branch=master"

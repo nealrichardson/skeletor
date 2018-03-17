@@ -7,19 +7,20 @@ Description: A tool for bootstrapping new packages with useful defaults,
     skeletons it creates are set up for pushing your package to
     'GitHub' and using other hosted services for building and test automation.
 Version: 1.0.5
-Date: 2017-04-22
 Authors@R: c(person("Neal", "Richardson", role = c("aut", "cre"),
     email = "neal.p.richardson@gmail.com"))
-Author: Neal Richardson [aut, cre]
-Maintainer: Neal Richardson <neal.p.richardson@gmail.com>
 URL: https://github.com/nealrichardson/skeletor
 BugReports: https://github.com/nealrichardson/skeletor/issues
 License: MIT + file LICENSE
 Depends:
     R (>= 3.0.0)
+Imports:
+    utils
 Suggests:
     covr,
     knitr,
+    spelling,
     testthat
-RoxygenNote: 6.0.0
+RoxygenNote: 6.0.1
 Roxygen: list(markdown = TRUE)
+Language: en-US

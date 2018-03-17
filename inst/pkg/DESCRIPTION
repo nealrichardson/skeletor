@@ -8,10 +8,7 @@ Description: A longer statement about what this does. It must have at least one
     may not report on these, but see  <https://cran.r-project.org/doc/manuals/r-release/R-exts.html#The-DESCRIPTION-file>.
     Failure to obey may result in CRAN rejecting your package submission.
 Version: 0.1.0
-Date: 2016-03-14
 Authors@R: c(person("your", "name", role=c("aut", "cre"), email="youremail@example.com"))
-Author: yourname [aut, cre]
-Maintainer: yourname <youremail@example.com>
 URL: https://github.com/yourgithub/yourpackagename
 BugReports: https://github.com/yourgithub/yourpackagename/issues
 License: MIT + file LICENSE
@@ -21,7 +18,9 @@ Imports:
 Suggests:
     covr,
     knitr,
-    testthat
+    testthat,
+    spelling
 RoxygenNote: 6.0.0
 Roxygen: list(markdown = TRUE)
 VignetteBuilder: knitr
+Language: en-US
