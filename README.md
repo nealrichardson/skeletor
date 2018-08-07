@@ -4,7 +4,7 @@
 
 Skeletor is a tool for bootstrapping new packages with useful defaults and scaffolding. Package skeletons it creates contain a test suite outline and hooks for adding documentation. They also are created with a Makefile to facilitate running tests, checking test coverage, building vignettes, and more. Skeletor also sets up packages to use git/GitHub for version control and Travis-CI to build and test your packages whenever you push to GitHub. Integrations with Codecov.io and Appveyor are also made effortless.
 
-While other R package skeletons exist, I found that I never used them. The defaults of the base R's `package.skeleton`, copying functions from the current R session, never are what I want, and what `devtools::create` makes is too bare. I found that I was starting every package by copying the last package I made, deleting its code and tests, and renaming everything. `skeletor` automates that.
+While other R package skeletons exist, I found that I never used them. The defaults of the base R's `package.skeleton()`, copying functions from the current R session, never are what I want, and what `devtools::create()` makes is too bare. I found that I was starting every package by copying the last package I made, deleting its code and tests, and renaming everything. `skeletor` automates that.
 
 ## Installing
 
@@ -15,13 +15,13 @@ The pre-CRAN-release version of the package can be pulled from GitHub using the 
 
 ## Using
 
-Skeletor provides two functions: (1) `skeletor`, which makes package skeletons, and (2) `configure`, which sets a few parameters in your .Rprofile so that you don't need to provide them each time. These parameters, which are inserted into the package skeleton template, are:
+Skeletor provides two functions: (1) `skeletor()`, which makes package skeletons, and (2) `configure()`, which sets a few parameters in your .Rprofile so that you don't need to provide them each time. These parameters, which are inserted into the package skeleton template, are:
 
 * **name**: your name
 * **email**: your email address
 * **github**: your GitHub username
 
-After installing, run `configure` once to set these, like:
+After installing, run `configure()` once to set these, like:
 
     > library(skeletor)
     > configure(name="Neal Richardson", email="neal.p.richardson@gmail.com", github="nealrichardson")
@@ -31,6 +31,8 @@ Thereafter, simply running
     $ R -e 'skeletor::skeletor("wittynamehere")'
 
 from the shell will create a package called "wittynamehere" in a same-named subdirectory of your current working directory, and it will insert your name, email, and GitHub account into the appropriate parts of the package. Then you can open that directory's contents in your favorite IDE or text editor. You also can immediately run tests on your new package with `make test` or by running `R CMD check` on it. See the new package's README.md file for further instructions on how to finish setting it up with GitHub and other hosted services.
+
+`skeletor()` takes one additional argument, `api`, which if `TRUE` will add to the skeleton an `R/api.R` with basic functions for wrapping an API, and the test suite will use the [`httptest`](https://enpiar.com/r/httptest/) package.
 
 ## For developers
 

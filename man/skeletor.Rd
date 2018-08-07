@@ -6,7 +6,7 @@
 \usage{
 skeletor(pkg, dir = pkg, name = getOption("skeletor.name"),
   email = getOption("skeletor.email"),
-  github = getOption("skeletor.github"))
+  github = getOption("skeletor.github"), api = FALSE)
 }
 \arguments{
 \item{pkg}{character: name for your new package}
@@ -22,6 +22,11 @@ See \code{\link[=configure]{configure()}} to set \code{name}, \code{email}, and
 
 \item{github}{character: the GitHub account where you will push this new
 package. Likewise taken from option 'skeletor.github' by default.}
+
+\item{api}{logical: is this package an API wrapper? If \code{TRUE}, an \code{api.R}
+file of boilerplate code will be added, \code{httr} will be added to \code{Imports},
+\code{httptest} will be added to \code{Suggests}, and some basic tests of the wrapping
+code will be added. Default is \code{FALSE}.}
 }
 \value{
 The path, \code{dir}, invisibly.

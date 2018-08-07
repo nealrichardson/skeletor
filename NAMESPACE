@@ -3,3 +3,4 @@
 export(configure)
 export(skeletor)
 importFrom(utils,as.person)
+importFrom(utils,installed.packages)

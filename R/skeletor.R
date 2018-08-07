@@ -9,12 +9,19 @@
 #' 'skeletor.email' by default.
 #' @param github character: the GitHub account where you will push this new
 #' package. Likewise taken from option 'skeletor.github' by default.
+#' @param api logical: is this package an API wrapper? If `TRUE`, an `api.R`
+#' file of boilerplate code will be added, `httr` will be added to `Imports`,
+#' `httptest` will be added to `Suggests`, and some basic tests of the wrapping
+#' code will be added. Default is `FALSE`.
 #' @return The path, `dir`, invisibly.
 #' @export
-#' @importFrom utils as.person
-skeletor <- function (pkg, dir=pkg, name=getOption("skeletor.name"),
+#' @importFrom utils as.person installed.packages
+skeletor <- function (pkg,
+                      dir=pkg,
+                      name=getOption("skeletor.name"),
                       email=getOption("skeletor.email"),
-                      github=getOption("skeletor.github")) {
+                      github=getOption("skeletor.github"),
+                      api=FALSE) {
 
     ## Make the package dir
     dir.create(dir)
@@ -40,39 +47,45 @@ skeletor <- function (pkg, dir=pkg, name=getOption("skeletor.name"),
     dir.create("man")
     dir.create("vignettes")
 
-    ## Load files that need munging
-    files.to.edit <- sapply(c("DESCRIPTION", "Makefile", "NEWS.md", "README.md",
+    files.to.edit <- c("DESCRIPTION", "Makefile", "NEWS.md", "README.md",
         ".gitignore", file.path("tests", "testthat.R"),
-        file.path("R", paste0(pkg, ".R"))),
-        readLines, simplify=FALSE)
+        file.path("R", paste0(pkg, ".R")))
+    api.files <- c(file.path("R", "api.R"),
+        file.path("tests", "testthat", "test-api.R"))
+    if (api) {
+        files.to.edit <- c(files.to.edit, api.files)
+        file.remove(file.path("tests", "testthat", "test-something.R"))
+    } else {
+        file.remove(api.files)
+    }
+    ## Load files that need munging
+    files <- sapply(files.to.edit, readLines, simplify=FALSE)
 
     ## Sub in the package name appropriately
-    files.to.edit <- lapply(files.to.edit, function (f) {
+    files <- lapply(files, function (f) {
         gsub("yourpackagename", pkg, f)
     })
 
     ## Edit the date in DESCRIPTION
-    dateline <- grep("^Date", files.to.edit[["DESCRIPTION"]])
-    files.to.edit[["DESCRIPTION"]][dateline] <- paste("Date:", Sys.Date())
+    dateline <- grep("^Date", files[["DESCRIPTION"]])
+    files[["DESCRIPTION"]][dateline] <- paste("Date:", Sys.Date())
 
     ## If name given, write it in
     if (!is.null(name)) {
         ## Read in the LICENSE (we don't need it otherwise)
-        files.to.edit[["LICENSE"]] <- gsub("yourname", name,
-            readLines("LICENSE"))
-        files.to.edit[["DESCRIPTION"]] <- gsub("yourname", name,
-            files.to.edit[["DESCRIPTION"]])
+        files[["LICENSE"]] <- gsub("yourname", name, readLines("LICENSE"))
+        files[["DESCRIPTION"]] <- gsub("yourname", name, files[["DESCRIPTION"]])
     }
     ## Same for github
     if (!is.null(github)) {
         for (f in c("DESCRIPTION", "README.md")) {
-            files.to.edit[[f]] <- gsub("yourgithub", github, files.to.edit[[f]])
+            files[[f]] <- gsub("yourgithub", github, files[[f]])
         }
     }
     ## And email
     if (!is.null(name)) {
-        files.to.edit[["DESCRIPTION"]] <- gsub("youremail@example.com", email,
-            files.to.edit[["DESCRIPTION"]])
+        files[["DESCRIPTION"]] <- gsub("youremail@example.com", email,
+            files[["DESCRIPTION"]])
     }
     ## Now do Authors@R
     if (!is.null(name) && !is.null(email)) {
@@ -81,14 +94,42 @@ skeletor <- function (pkg, dir=pkg, name=getOption("skeletor.name"),
         authors.at.r <- paste0('Authors@R: person(', deparse(p$given), ', ',
             deparse(p$family), ', role=c("aut", "cre"), email="', email,
             '")')
-        authors.row <- grep("^Authors", files.to.edit[["DESCRIPTION"]])
-        files.to.edit[["DESCRIPTION"]][authors.row] <- authors.at.r
+        authors.row <- grep("^Authors", files[["DESCRIPTION"]])
+        files[["DESCRIPTION"]][authors.row] <- authors.at.r
+    }
+
+    if (api) {
+        ## Add Imports/Suggests for API packages
+        files[["DESCRIPTION"]] <- splice(
+            files[["DESCRIPTION"]],
+            grep("^Imports:", files[["DESCRIPTION"]]),
+            "    httr,",
+            "    utils"
+        )
+        files[["DESCRIPTION"]] <- splice(
+            files[["DESCRIPTION"]],
+            grep("^    covr", files[["DESCRIPTION"]]),
+            "    httptest,"
+        )
+        ## Use httptest in tests
+        files[[file.path("tests", "testthat.R")]][1] <- "library(httptest)"
     }
 
     ## Write them all back out
-    for (f in names(files.to.edit)) {
-        writeLines(files.to.edit[[f]], f)
+    for (f in names(files)) {
+        writeLines(files[[f]], f)
+    }
+
+    if (api && "roxygen2" %in% rownames(installed.packages())) {
+        ## Build our man pages and NAMESPACE because the API version has code
+        roxygen2::roxygenise()
     }
 
     invisible(dir)
+}
+
+splice <- function (str, at, ...) {
+    end <- length(str)
+    ## TODO: validate that at %in% seq_len(end)
+    c(str[1:at], ..., str[(at + 1):end])
 }

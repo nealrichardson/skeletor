@@ -6,7 +6,7 @@ Description: A tool for bootstrapping new packages with useful defaults,
     tests, checking test coverage, building vignettes, and more. Package
     skeletons it creates are set up for pushing your package to
     'GitHub' and using other hosted services for building and test automation.
-Version: 1.0.5
+Version: 1.1.0
 Authors@R: c(person("Neal", "Richardson", role = c("aut", "cre"),
     email = "neal.p.richardson@gmail.com"))
 URL: https://github.com/nealrichardson/skeletor
@@ -19,6 +19,7 @@ Imports:
 Suggests:
     covr,
     knitr,
+    roxygen2,
     spelling,
     testthat
 RoxygenNote: 6.0.1

@@ -1,0 +1,12 @@
+structure(list(url = "https://example.com/418", status_code = 404L,
+    headers = structure(list(`content-length` = "135"), class = c("insensitive",
+    "list")), all_headers = list(list(status = 404L, version = "HTTP/1.1",
+        headers = structure(list(`content-length` = "135"), class = c("insensitive",
+        "list")))), cookies = structure(list(domain = logical(0),
+        flag = logical(0), path = logical(0), secure = logical(0),
+        expiration = structure(numeric(0), class = c("POSIXct",
+        "POSIXt")), name = logical(0), value = logical(0)), row.names = integer(0), class = "data.frame"),
+    content = charToRaw(""), date = structure(1533661518, class = c("POSIXct",
+    "POSIXt"), tzone = "GMT"), times = c(redirect = 0, namelookup = 0.046944,
+    connect = 0.149693, pretransfer = 0.149791, starttransfer = 0.340701,
+    total = 0.340738)), class = "response")
