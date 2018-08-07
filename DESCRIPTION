@@ -18,6 +18,7 @@ Imports:
     utils
 Suggests:
     covr,
+    httptest,
     knitr,
     roxygen2,
     spelling,
