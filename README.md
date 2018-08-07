@@ -2,11 +2,15 @@
 
 [![Build Status](https://travis-ci.org/nealrichardson/skeletor.png?branch=master)](https://travis-ci.org/nealrichardson/skeletor) [![Build status](https://ci.appveyor.com/api/projects/status/28hsiu1b9ntisto7/branch/master?svg=true)](https://ci.appveyor.com/project/nealrichardson/skeletor/branch/master)  [![codecov](https://codecov.io/gh/nealrichardson/skeletor/branch/master/graph/badge.svg)](https://codecov.io/gh/nealrichardson/skeletor) [![cran](https://www.r-pkg.org/badges/version-last-release/skeletor)](https://cran.r-project.org/package=skeletor)
 
-Skeletor is a tool for bootstrapping new packages with useful defaults and scaffolding. Package skeletons it creates contain a test suite outline and hooks for adding documentation. They also are created with a Makefile to facilitate running tests, checking test coverage, building vignettes, and more. Skeletor also sets up packages to use git/GitHub for version control and Travis-CI to build and test your packages whenever you push to GitHub. Integrations with Codecov.io and Appveyor are also made effortless.
+Skeletor is a tool for bootstrapping new packages with useful defaults and scaffolding. Package skeletons it creates contain a test suite outline and hooks for adding documentation. They also are created with a Makefile to facilitate running tests, checking test coverage, building vignettes, and more. Skeletor also sets up packages to use git/GitHub for version control and Travis-CI to build and test your packages whenever you push to GitHub. Integrations with Codecov.io and Appveyor are also made effortless, and with one additional argument, you can get additional boilerplate and testing setup for writing an R package that wraps an API.
 
 While other R package skeletons exist, I found that I never used them. The defaults of the base R's `package.skeleton()`, copying functions from the current R session, never are what I want, and what `devtools::create()` makes is too bare. I found that I was starting every package by copying the last package I made, deleting its code and tests, and renaming everything. `skeletor` automates that.
 
 ## Installing
+
+`skeletor` is available on CRAN:
+
+    install.packages("skeletor")
 
 The pre-CRAN-release version of the package can be pulled from GitHub using the [devtools](https://github.com/hadley/devtools) package:
 
@@ -24,7 +28,8 @@ Skeletor provides two functions: (1) `skeletor()`, which makes package skeletons
 After installing, run `configure()` once to set these, like:
 
     > library(skeletor)
-    > configure(name="Neal Richardson", email="neal.p.richardson@gmail.com", github="nealrichardson")
+    > configure(name="Neal Richardson", email="neal.p.richardson@gmail.com",
+        github="nealrichardson")
 
 Thereafter, simply running
 
@@ -40,7 +45,7 @@ The repository---and the repositories it creates---include a Makefile to facilit
 
 ### Running tests
 
-`$ make test`. Requires the [testthat](https://github.com/hadley/testthat) package. You can also specify a specific test file or files to run by adding a "file=" argument, like `$ make test file=configure`. `test_package` will do a regular-expression pattern match within the file names. See its documentation in the `testthat` package.
+`$ make test`. Requires the [testthat](http://testthat.r-lib.org) package. You can also specify a specific test file or files to run by adding a "file=" argument, like `$ make test file=configure`. `test_package` will do a regular-expression pattern match within the file names. See its documentation in the `testthat` package.
 
 ### Updating documentation
 

@@ -1,0 +1,20 @@
+url: https://enpiar.com/r/skeletor/
+navbar:
+  title: skeletor
+  type: default
+  left:
+  - text: Reference
+    href: reference/
+  - text: News
+    href: news/
+  right:
+  - icon: fa-github fa-lg
+    href: https://github.com/nealrichardson/skeletor
+  - icon: fa-home fa-lg
+    href: https://enpiar.com
+reference:
+- title: All functions
+  desc: ~
+  contents:
+  - configure
+  - skeletor

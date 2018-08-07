@@ -9,7 +9,7 @@ Description: A tool for bootstrapping new packages with useful defaults,
 Version: 1.1.0
 Authors@R: c(person("Neal", "Richardson", role = c("aut", "cre"),
     email = "neal.p.richardson@gmail.com"))
-URL: https://github.com/nealrichardson/skeletor
+URL: https://github.com/nealrichardson/skeletor, https://enpiar.com/r/skeletor/
 BugReports: https://github.com/nealrichardson/skeletor/issues
 License: MIT + file LICENSE
 Depends:

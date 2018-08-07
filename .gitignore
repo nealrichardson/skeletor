@@ -4,7 +4,7 @@
 skeletor*.tar.gz
 .DS_Store
 Rd2.pdf
-assets/
+docs/
 inst/doc/*.html
 *.log
 .Rproj.user
