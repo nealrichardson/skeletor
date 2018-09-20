@@ -15,6 +15,8 @@ public({
         expect_dir_exists(file.path(dest, "tests"))
         expect_dir_exists(file.path(dest, "man"))
         expect_dir_exists(file.path(dest, "vignettes"))
+        # But not this api one
+        expect_false(dir.exists(file.path(dest, "tests", "testthat", "example.com")))
     })
     test_that("The right files exist", {
         expect_file_exists(file.path(dest, "DESCRIPTION"))
@@ -22,6 +24,8 @@ public({
         expect_file_exists(file.path(dest, "Makefile"))
         expect_file_exists(file.path(dest, ".gitignore"))
         expect_file_exists(file.path(dest, "R", "testskeletor.R"))
+        # But not this one
+        expect_false(file.exists(file.path(dest, "tests", "testthat", "test-api.R")))
     })
 
     desc <- readLines(file.path(dest, "DESCRIPTION"))

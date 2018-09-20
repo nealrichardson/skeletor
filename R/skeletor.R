@@ -57,6 +57,7 @@ skeletor <- function (pkg,
         file.remove(file.path("tests", "testthat", "test-something.R"))
     } else {
         file.remove(api.files)
+        unlink(file.path("tests", "testthat", "example.com"), recursive=TRUE)
     }
     ## Load files that need munging
     files <- sapply(files.to.edit, readLines, simplify=FALSE)

@@ -1,3 +1,7 @@
+# skeletor 1.1.1 (under development)
+* Add `Encoding: UTF-8` as latest `roxygen2` insists
+* Clean up test fixtures when `api=FALSE`
+
 # skeletor 1.1.0
 
 * New `api` argument to `skeletor()`. If `TRUE`, the generated skeleton will have an `R/api.R` with basic functions for wrapping an API, and the test suite will use the [`httptest`](https://enpiar.com/r/httptest/) package.

@@ -23,6 +23,7 @@ Suggests:
     roxygen2,
     spelling,
     testthat
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0
 Roxygen: list(markdown = TRUE)
 Language: en-US
+Encoding: UTF-8
