@@ -1,6 +1,6 @@
 # skeletor: An R Package Skeleton Generator
 
-[![Build Status](https://travis-ci.org/nealrichardson/skeletor.png?branch=master)](https://travis-ci.org/nealrichardson/skeletor) [![Build status](https://ci.appveyor.com/api/projects/status/28hsiu1b9ntisto7/branch/master?svg=true)](https://ci.appveyor.com/project/nealrichardson/skeletor/branch/master)  [![codecov](https://codecov.io/gh/nealrichardson/skeletor/branch/master/graph/badge.svg)](https://codecov.io/gh/nealrichardson/skeletor) [![cran](https://www.r-pkg.org/badges/version-last-release/skeletor)](https://cran.r-project.org/package=skeletor)
+[![Build status](https://ci.appveyor.com/api/projects/status/28hsiu1b9ntisto7/branch/master?svg=true)](https://ci.appveyor.com/project/nealrichardson/skeletor/branch/master)  [![codecov](https://codecov.io/gh/nealrichardson/skeletor/branch/master/graph/badge.svg)](https://codecov.io/gh/nealrichardson/skeletor) [![cran](https://www.r-pkg.org/badges/version-last-release/skeletor)](https://cran.r-project.org/package=skeletor)
 
 Skeletor is a tool for bootstrapping new packages with useful defaults and scaffolding. Package skeletons it creates contain a test suite outline and hooks for adding documentation. They also are created with a Makefile to facilitate running tests, checking test coverage, building vignettes, and more. Skeletor also sets up packages to use git/GitHub for version control and Travis-CI to build and test your packages whenever you push to GitHub. Integrations with Codecov.io and Appveyor are also made effortless, and with one additional argument, you can get additional boilerplate and testing setup for writing an R package that wraps an API.
 
@@ -12,7 +12,7 @@ While other R package skeletons exist, I found that I never used them. The defau
 
     install.packages("skeletor")
 
-The pre-CRAN-release version of the package can be pulled from GitHub using the [devtools](https://github.com/hadley/devtools) package:
+The pre-CRAN-release version of the package can be pulled from GitHub using the [devtools](https://github.com/r-lib/devtools) package:
 
     # install.packages("devtools")
     devtools::install_github("nealrichardson/skeletor")
@@ -49,4 +49,4 @@ The repository---and the repositories it creates---include a Makefile to facilit
 
 ### Updating documentation
 
-`$ make doc`. Requires the [roxygen2](https://github.com/klutometis/roxygen) package.
+`$ make doc`. Requires the [roxygen2](https://github.com/r-lib/roxygen2) package.

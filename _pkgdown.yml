@@ -1,4 +1,6 @@
 url: https://enpiar.com/r/skeletor/
+template:
+  bootstrap: 5
 navbar:
   title: skeletor
   type: default
